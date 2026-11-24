@@ -58,17 +58,13 @@ const dataSiswa: Siswa[] = [
 ];
 
 const search = document.getElementById("search") as HTMLInputElement;
-const tabelSiswa = document.getElementById(
-  "tabelSiswa"
-) as HTMLTableSectionElement;
+const tabelSiswa = document.getElementById("tabelSiswa",) as HTMLTableSectionElement;
 const rataRata = document.getElementById("rataRata") as HTMLElement;
 
 search.addEventListener("input", function (event: Event): void {
   const searchInput = search.value.toLowerCase();
 
-  const hasilInput = dataSiswa.filter(function (
-    siswa: Siswa
-  ): boolean {
+  const hasilInput = dataSiswa.filter(function (siswa: Siswa): boolean {
     return siswa.name.toLowerCase().includes(searchInput);
   });
 
@@ -76,10 +72,7 @@ search.addEventListener("input", function (event: Event): void {
 });
 
 function tampilkanData(data: Siswa[]): void {
-  const namaSiswa = data.map(function (
-    siswa: Siswa,
-    index: number
-  ): string {
+  const namaSiswa = data.map(function (siswa: Siswa, index: number): string {
     let warnaNilai: string;
 
     if (siswa.score >= 90) {
@@ -113,13 +106,12 @@ function tampilkanData(data: Siswa[]): void {
 
   const totalNilai = data.reduce(function (
     total: number,
-    siswa: Siswa
+    siswa: Siswa,
   ): number {
     return total + siswa.score;
   }, 0);
 
-  const rataRataNilai: number =
-    data.length > 0 ? totalNilai / data.length : 0;
+  const rataRataNilai: number = data.length > 0 ? totalNilai / data.length : 0;
 
   rataRata.textContent = rataRataNilai.toFixed(1);
 }
