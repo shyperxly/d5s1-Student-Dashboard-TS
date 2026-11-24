@@ -1,11 +1,9 @@
-// 1. Membuat interface untuk menentukan struktur data siswa
 interface Siswa {
   name: string;
   class: string;
   score: number;
 }
 
-// 2. Data siswa
 const dataSiswa: Siswa[] = [
   {
     name: "Andi Saputra",
@@ -59,7 +57,6 @@ const dataSiswa: Siswa[] = [
   },
 ];
 
-// 3. Mengambil elemen HTML
 const search = document.getElementById(
   "search"
 ) as HTMLInputElement;
@@ -72,7 +69,6 @@ const rataRata = document.getElementById(
   "rataRata"
 ) as HTMLElement;
 
-// 4. Membuat fitur pencarian siswa
 search.addEventListener("input", function (event: Event): void {
   const searchInput: string = search.value.toLowerCase();
 
@@ -85,13 +81,11 @@ search.addEventListener("input", function (event: Event): void {
   tampilkanData(hasilInput);
 });
 
-// 5. Fungsi untuk menampilkan data siswa
 function tampilkanData(data: Siswa[]): void {
   const namaSiswa: string[] = data.map(
     function (siswa: Siswa, index: number): string {
       let warnaNilai: string;
 
-      // Menentukan warna berdasarkan nilai siswa
       if (siswa.score >= 90) {
         warnaNilai = "bg-success";
       } else if (siswa.score >= 75) {
@@ -100,7 +94,6 @@ function tampilkanData(data: Siswa[]): void {
         warnaNilai = "bg-danger";
       }
 
-      // Membuat baris tabel HTML
       return `
         <tr>
           <td>${index + 1}</td>
@@ -125,12 +118,10 @@ function tampilkanData(data: Siswa[]): void {
     }
   );
 
-  // Menampilkan data ke dalam tabel
   const hasilSiswa: string = namaSiswa.join("");
 
   tabelSiswa.innerHTML = hasilSiswa;
 
-  // 6. Menghitung total nilai siswa
   const totalNilai: number = data.reduce(
     function (total: number, siswa: Siswa): number {
       return total + siswa.score;
@@ -138,13 +129,10 @@ function tampilkanData(data: Siswa[]): void {
     0
   );
 
-  // 7. Menghitung rata-rata nilai
   const rataRataNilai: number =
     data.length > 0 ? totalNilai / data.length : 0;
 
-  // 8. Menampilkan rata-rata nilai
   rataRata.textContent = rataRataNilai.toFixed(1);
 }
 
-// 9. Menampilkan seluruh data saat halaman pertama kali dibuka
 tampilkanData(dataSiswa);
