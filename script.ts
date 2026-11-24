@@ -57,14 +57,12 @@ const dataSiswa: Siswa[] = [
   },
 ];
 
-// Mengambil elemen HTML
 const search = document.getElementById("search") as HTMLInputElement;
 const tabelSiswa = document.getElementById(
   "tabelSiswa"
 ) as HTMLTableSectionElement;
 const rataRata = document.getElementById("rataRata") as HTMLElement;
 
-// Event pencarian siswa
 search.addEventListener("input", function (event: Event): void {
   const searchInput = search.value.toLowerCase();
 
@@ -77,7 +75,6 @@ search.addEventListener("input", function (event: Event): void {
   tampilkanData(hasilInput);
 });
 
-// Fungsi untuk menampilkan data siswa
 function tampilkanData(data: Siswa[]): void {
   const namaSiswa = data.map(function (
     siswa: Siswa,
@@ -114,7 +111,6 @@ function tampilkanData(data: Siswa[]): void {
   const hasilSiswa: string = namaSiswa.join("");
   tabelSiswa.innerHTML = hasilSiswa;
 
-  // Menghitung total nilai
   const totalNilai = data.reduce(function (
     total: number,
     siswa: Siswa
@@ -122,12 +118,10 @@ function tampilkanData(data: Siswa[]): void {
     return total + siswa.score;
   }, 0);
 
-  // Menghitung rata-rata nilai
   const rataRataNilai: number =
     data.length > 0 ? totalNilai / data.length : 0;
 
   rataRata.textContent = rataRataNilai.toFixed(1);
 }
 
-// Menampilkan semua data saat halaman dibuka
 tampilkanData(dataSiswa);

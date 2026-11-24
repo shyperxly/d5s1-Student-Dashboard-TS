@@ -52,11 +52,9 @@ const dataSiswa = [
         score: 75,
     },
 ];
-// Mengambil elemen HTML
 const search = document.getElementById("search");
 const tabelSiswa = document.getElementById("tabelSiswa");
 const rataRata = document.getElementById("rataRata");
-// Event pencarian siswa
 search.addEventListener("input", function (event) {
     const searchInput = search.value.toLowerCase();
     const hasilInput = dataSiswa.filter(function (siswa) {
@@ -64,7 +62,6 @@ search.addEventListener("input", function (event) {
     });
     tampilkanData(hasilInput);
 });
-// Fungsi untuk menampilkan data siswa
 function tampilkanData(data) {
     const namaSiswa = data.map(function (siswa, index) {
         let warnaNilai;
@@ -96,14 +93,11 @@ function tampilkanData(data) {
     });
     const hasilSiswa = namaSiswa.join("");
     tabelSiswa.innerHTML = hasilSiswa;
-    // Menghitung total nilai
     const totalNilai = data.reduce(function (total, siswa) {
         return total + siswa.score;
     }, 0);
-    // Menghitung rata-rata nilai
     const rataRataNilai = data.length > 0 ? totalNilai / data.length : 0;
     rataRata.textContent = rataRataNilai.toFixed(1);
 }
-// Menampilkan semua data saat halaman dibuka
 tampilkanData(dataSiswa);
 //# sourceMappingURL=script.js.map
